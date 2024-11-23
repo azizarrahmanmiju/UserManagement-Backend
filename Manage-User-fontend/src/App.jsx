@@ -35,7 +35,7 @@ function App() {
     const user = {
       name, email
     }
-    fetch("http://localhost:5000/users", {
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,8 +44,10 @@ function App() {
     }).then((res) => res.json()).then((data) => {
       form.reset();
       console.log(data.user);
-      const newUSer = [...User, data];
-      setUser(newUSer);
+      const newUSers = [...User, data.user];
+      console.log(newUSers)
+      setUser(newUSers);
+
 
     })
 
@@ -58,19 +60,20 @@ function App() {
     <div>
       <h1 className='text-2xl '> User management Fontend</h1>
       <div >
-        <form onSubmit={AddingUser} className='grid grid-cols-1 container mx-auto p-4 border w-[300px] gap-2 rounded-lg'>
+        <form onSubmit={AddingUser} className='grid grid-cols-1 container mx-auto p-4 border w-[300px] gap-2 rounded-lg mt-4'>
           <input className='p-2 border rounded-md' type="text" name='name' placeholder='Enter user name' />
           <input className='p-2 border rounded-md' type="text" name='email' placeholder='Enter Your Email' />
-          <button className='border rounded text-xl p-2' type='submit'>Add User</button>
+          <button className='border rounded text-xl p-2 bg-[#000] text-white' type='submit'>Add User</button>
         </form>
         <div className='m-4 w-[300px] h-10'>
         </div>
       </div>
       <div>
+        <h1 className='text-2xl'>User List</h1>
         {
           User.map((user, index) => {
             return (
-              <div key={index} className='flex border p-4 shadow-lg gap-2 m-4  rounded-lg'>
+              <div key={index} className='flex border p-4 shadow-lg gap-2 m-2  rounded-lg'>
                 <h2>{user.id}</h2>
                 <h2>{user.name}</h2>
                 <h2>{user.email}</h2>
