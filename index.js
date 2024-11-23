@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 app.get("/users", (req, res) => {
-    res.send(User);
+    res.send(data = User);
 })
 
 app.listen(port, () => {
