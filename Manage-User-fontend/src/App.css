@@ -40,3 +40,6 @@
 .read-the-docs {
   color: #888;
 }
+body{
+  @apply justify-center items-center grid h-screen gap-2
+}
